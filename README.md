@@ -2,7 +2,7 @@
 
 Simple, lightweight PHP-SDK for searching and downloading subtitles from [Subscene.com](https://www.subscene.com).
 
-**__WARNING:__ USE WITH CAUTION!**
+#### WARNING: USE WITH CAUTION!
 
 Unfortunately Subscene.com does not yet provide an official API, even though they announced one on Twitter back in 2013.
 
@@ -10,7 +10,7 @@ This means, that the SDK is subject to change and might not work as expected, wh
 
 Please keep that in mind before using this SDK in production.
 
-### Credits
+#### Credits
 
 Thanks to [Subscene.com](https://www.subscene.com) for providing that awesome service!
 
