@@ -34,15 +34,18 @@ composer require pecee/subscene-php-sdk
 - **[Search for subtitles](#search-for-subtitles)**
    - [Parameters](#parameters)
    - [Response](#response)
-   
+
 - **[Get subtitles by movie id](#get-subtitles-by-movie-id)**
    - [Parameters](#parameters-1)
    - [Response](#response-1)
-   
+
 - **[Full search](#full-search)**
    - [Parameters](#parameters-2)
    - [Response](#response-2)
-   
+
+- **[Download subtitle](#download-subtitle)**
+   - [Parameters](#parameters-3)
+   - [Response](#response-3)
 
 ## Search for subtitles
 
@@ -164,6 +167,25 @@ $subtitles = $movie->searchFull('the-walk', ['dan', 'eng']);
    }
 ]
 ```
+
+### Download subtitle
+
+Download subtitle from Subscene.
+
+```php
+$client = \Pecee\Service\Subscene();
+$subtitles = $movie->download('https://subscene.com/subtitle/download?mac=YYhV9nVUcbV1K_BhkVM8E6BrGB8qmFEFX3ykn6Iz0JEwNzh2YsugBFp-18ue_eYJw3RE_fVmlHV8nQh_FLsy7r5kZIJ_Z3OTBDIfWhsj2BhhcKnFrY8jXQycuHUOuiSS0');
+```
+
+#### Parameters
+
+| Name              | Type          | Default value | Description                                                                               |
+| -------------     |----------     | -----         | ---------------                                                                           |
+| `$url`            | `string`      |               | The subtitle url you've received when searching for the subtitle.                         |
+
+#### Response:
+
+You will receive the binary output for the file.
 
 # License
 

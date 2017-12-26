@@ -35,6 +35,8 @@ class Subscene
             'cache-control:max-age=0',
             'cookie:LanguageFilter=; HearingImpaired=0; ForeignOnly=False',
         ]);
+
+        $this->httpRequest->setReturnHeader(false);
     }
 
     /**
@@ -50,11 +52,11 @@ class Subscene
         $httpResponse = $this->httpRequest->execute();
 
         if ($httpResponse->getStatusCode() !== 200) {
-            throw new Exception(sprintf('Request failed with status-code %s', $httpResponse->getStatusCode()), $httpResponse->getStatusCode());
+            throw new Exception(sprintf('Request failed with status-code %s for url %s', $httpResponse->getStatusCode(), $httpResponse->getUrl()), $httpResponse->getStatusCode(), $httpResponse);
         }
 
-        if ($httpResponse->getResponse() === '') {
-            throw new Exception('Invalid response');
+        if (empty($httpResponse->getResponse()) === true) {
+            throw new Exception('Invalid response', $httpResponse->getStatusCode(), $httpResponse);
         }
 
         return $httpResponse->getResponse();
@@ -193,6 +195,18 @@ class Subscene
 
         return new Response($subtitles);
 
+    }
+
+    /**
+     * Download subtitle file
+     *
+     * @param string $url
+     * @return string
+     * @throws Exception
+     */
+    public function downloadSubtitle($url)
+    {
+        return $this->api(str_ireplace('https://subscene.com', '', $url));
     }
 
     /**
