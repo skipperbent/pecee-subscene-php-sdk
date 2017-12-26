@@ -1,6 +1,6 @@
 # pecee/subscene-php-sdk
 
-Simple, lightweight PHP-SDK for searching and downloading subtitles from Subscene.com.
+Simple, lightweight PHP-SDK for searching and downloading subtitles from [Subscene.com](https://www.subscene.com).
 
 **__WARNING:__ USE WITH CAUTION!**
 
@@ -12,13 +12,25 @@ Please keep that in mind before using this SDK in production.
 
 ### Credits
 
-Thanks to [https://www.subscene.com](Subscene.com) for providing that awesome service!
+Thanks to [Subscene.com](https://www.subscene.com) for providing that awesome service!
 
 We're still waiting for that API [you promised](https://twitter.com/subscene_com/status/367914801315340288?lang=en) :)
 
 # Usage
 
-## Search for subtitle
+- [Search for subtitles](#search-for-subtitles)
+   - [Parameters](#parameters)
+   - [Response](#response)
+   
+- [Get subtitles by movie id](#get-subtitles-by-movie-id)
+   - [Parameters](#parameters-)
+   - [Response](#response-)
+
+- [Full search](#full-search)
+   - [Parameters](#parameters--)
+   - [Response](#response--)
+
+## Search for subtitles
 
 ```php
 $client = \Pecee\Service\Subscene();
@@ -45,7 +57,7 @@ $subtitles = $movie->search('The Walk');
 ]
 ```
 
-## Get subtitles by id
+## Get subtitles by movie id
 
 ```php
 $client = \Pecee\Service\Subscene();
@@ -91,9 +103,9 @@ $subtitles = $movie->getSubtitles('the-walk', ['dan', 'eng']);
 ]
 ```
 
-## Search and get subtitles
+## Full search
 
-This method will lookup subtitles for each result. Can be extremely slow with many results.
+This method will lookup subtitles for each result. Can be extremely slow depending on the number of results.
 
 ```php
 $client = \Pecee\Service\Subscene();
