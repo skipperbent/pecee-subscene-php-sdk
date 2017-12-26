@@ -1,8 +1,8 @@
 # pecee/subscene-php-sdk
 
-PHP SDK for retrieving subtitles from Subscene.com.
+Simple, lightweight PHP-SDK for searching and downloading subtitles from [Subscene.com](https://www.subscene.com).
 
-**__WARNING:__ USE WITH CAUTION!**
+#### WARNING: USE WITH CAUTION!
 
 Unfortunately Subscene.com does not yet provide an official API, even though they announced one on Twitter back in 2013.
 
@@ -10,29 +10,42 @@ This means, that the SDK is subject to change and might not work as expected, wh
 
 Please keep that in mind before using this SDK in production.
 
-## Credits
+#### Credits
 
-Thanks to [https://www.subscene.com](Subscene.com) for providing that awesome service!
+Thanks to [Subscene.com](https://www.subscene.com) for providing that awesome service!
 
 We're still waiting for that API [you promised](https://twitter.com/subscene_com/status/367914801315340288?lang=en) :)
 
-## Usage
+# Usage
 
-### Search for subtitle
+- **[Search for subtitles](#search-for-subtitles)**
+   - [Parameters](#parameters)
+   - [Response](#response)
+   
+- **[Get subtitles by movie id](#get-subtitles-by-movie-id)**
+   - [Parameters](#parameters-1)
+   - [Response](#response-1)
+   
+- **[Full search](#full-search)**
+   - [Parameters](#parameters-2)
+   - [Response](#response-2)
+   
+
+## Search for subtitles
 
 ```php
 $client = \Pecee\Service\Subscene();
 $subtitles = $movie->search('The Walk');
 ```
 
-#### Parameters
+### Parameters
 
 | Name              | Type          | Default value | Description                                                                               |
 | -------------     |----------     | -----         | ---------------                                                                           |
 | `$title`          | `string`      |               | Title of the movie you want to search for.                                                |
-| `$languageIds`    | `array|null`  | `null`        | The language-ids you want subtitles for. Example: `dan`, `eng`, `pol` etc.                |
+| `$languageIds`    | `array\|null`  | `null`        | The language-ids you want subtitles for. Example: `dan`, `eng`, `pol` etc.                |
 
-#### Response
+### Response
 
 ```json
 [
@@ -41,29 +54,26 @@ $subtitles = $movie->search('The Walk');
       "title":"The Walk",
       "year":"2015",
       "count":"114",
-   },
-   {
-      // ...
    }
 ]
 ```
 
-### Get subtitles by id
+## Get subtitles by movie id
 
 ```php
 $client = \Pecee\Service\Subscene();
 $subtitles = $movie->getSubtitles('the-walk', ['dan', 'eng']);
 ```
 
-#### Parameters
+### Parameters
 
 | Name              | Type          | Default value | Description                                                                               |
 | -------------     |----------     | -----         | ---------------                                                                           |
 | `$id`             | `string`      |               | Unique identifier/id for the movie you want to get the subtitles for.                     |
-| `$languageIds`    | `array|null`  | `null`        | The language-ids you want subtitles for. Example: `dan`, `eng`, `pol` etc.                |
+| `$languageIds`    | `array\|null`  | `null`        | The language-ids you want subtitles for. Example: `dan`, `eng`, `pol` etc.                |
 | `$multiple`       | `bool`        | `false`       | Fetch multiple subtitles per language. Can be slow depending on the number of results.    |
 
-#### Response
+### Response
 
 ```json
 [
@@ -94,24 +104,24 @@ $subtitles = $movie->getSubtitles('the-walk', ['dan', 'eng']);
 ]
 ```
 
-### Search and get subtitles
+## Full search
 
-This method will lookup subtitles for each result. Can be extremely slow with many results.
+This method will lookup subtitles for each result. Can be extremely slow depending on the number of results.
 
 ```php
 $client = \Pecee\Service\Subscene();
 $subtitles = $movie->searchFull('the-walk', ['dan', 'eng']);
 ```
 
-#### Parameters
+### Parameters
 
 | Name              | Type          | Default value | Description                                                                               |
 | -------------     |----------     | -----         | ---------------                                                                           |
 | `$title`          | `string`      |               | Title of the movie you want to search for.                                                |
-| `$languageIds`    | `array|null`  | `null`        | The language-ids you want subtitles for. Example: `dan`, `eng`, `pol` etc.                |
+| `$languageIds`    | `array\|null`  | `null`        | The language-ids you want subtitles for. Example: `dan`, `eng`, `pol` etc.                |
 | `$multiple`       | `bool`        | `false`       | Fetch multiple subtitles per language. Can be slow depending on the number of results.    |
 
-#### Response:
+### Response:
 
 ```json
 [
