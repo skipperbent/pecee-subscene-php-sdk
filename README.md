@@ -23,12 +23,12 @@ We're still waiting for that API [you promised](https://twitter.com/subscene_com
    - [Response](#response)
    
 - [Get subtitles by movie id](#get-subtitles-by-movie-id)
-   - [Parameters](#parameters1)
-   - [Response](#response1)
+   - [Parameters](#parameters-1)
+   - [Response](#response-1)
 
 - [Full search](#full-search)
-   - [Parameters](#parameters2)
-   - [Response](#response2)
+   - [Parameters](#parameters-2)
+   - [Response](#response-2)
 
 ## Search for subtitles
 
