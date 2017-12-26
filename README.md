@@ -16,6 +16,19 @@ Thanks to [Subscene.com](https://www.subscene.com) for providing that awesome se
 
 We're still waiting for that API [you promised](https://twitter.com/subscene_com/status/367914801315340288?lang=en) :)
 
+# Installation
+
+You can add this library to your project easily by running the following composer command in your terminal/command-line:
+
+```php
+composer require pecee/subscene-php-sdk
+```
+
+### Requirements
+
+- PHP 5.6 or greater
+- curl extension enabled
+
 # Usage
 
 - **[Search for subtitles](#search-for-subtitles)**
