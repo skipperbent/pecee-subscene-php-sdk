@@ -2,6 +2,8 @@
 
 namespace Pecee\Service\Subscene;
 
-class Exception extends \Exception
+use Pecee\Http\HttpException;
+
+class Exception extends HttpException
 {
 }

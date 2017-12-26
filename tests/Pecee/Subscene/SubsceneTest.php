@@ -22,6 +22,7 @@ class SubsceneTest extends TestCase
         $subtitles = $movie->searchFull('The Walk', ['dan', 'eng'])->toArray();
 
         if (isset($subtitles[0]['subtitles'][0]['download_url'], $subtitles[0]['subtitles'][1]['download_url'])) {
+            $subtitleUrl = $subtitles[0]['subtitles'][0]['download_url'];
             unset($subtitles[0]['subtitles'][0]['download_url'], $subtitles[0]['subtitles'][1]['download_url']);
         }
 
@@ -51,6 +52,26 @@ class SubsceneTest extends TestCase
             ],
         ], $subtitles);
 
+        $this->doTestDownload($subtitleUrl);
+    }
+
+    public function doTestDownload($subtitleUrl)
+    {
+        if($subtitleUrl === null) {
+            throw new \ErrorException('No valid subtitle-url');
+        }
+
+        $subscene = new Subscene();
+
+        // My local Apache client won't work unless this is set
+        $subscene->getHttpRequest()->setOptions([
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_SSL_VERIFYHOST => 2,
+        ]);
+
+        $response = $subscene->downloadSubtitle($subtitleUrl);
+
+        $this->assertTrue(strlen($response) > 0);
     }
 
 }
