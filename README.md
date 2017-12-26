@@ -2,7 +2,7 @@
 
 PHP SDK for retrieving subtitles from Subscene.com.
 
-##### WARNING: USE WITH CAUTION!
+**__WARNING:__ USE WITH CAUTION!**
 
 Unfortunately Subscene.com does not yet provide an official API, even though they announced one on Twitter back in 2013.
 
